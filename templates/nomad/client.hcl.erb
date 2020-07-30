@@ -1,0 +1,33 @@
+# This file is managed by Puppet
+
+datacenter = "dc1"
+data_dir = "/opt/nomad"
+log_level = "WARN"
+
+server {
+ enabled = false
+}
+
+acl {
+  enabled = true
+}
+
+advertise {
+  http = "<%= @facts['ipaddress'] %>"
+  rpc  = "<%= @facts['ipaddress'] %>"
+  serf = "<%= @facts['ipaddress'] %>"
+}
+
+client {
+ enabled = true
+ server_join {
+   retry_join = [<%= @retry_join.join(',') %>]
+ }
+ options = {
+   "docker.volumes.enabled" = true
+ }
+}
+
+options = {
+ "docker.volumes.enabled" = true
+}

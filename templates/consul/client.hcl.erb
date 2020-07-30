@@ -1,0 +1,10 @@
+# This file is managed by Puppet
+
+server = false
+datacenter = "dc1"
+data_dir = "/opt/consul"
+client_addr = "0.0.0.0"
+advertise_addr = <%= @facts['ipaddress'] %>
+retry_join = [<%= @retry_join.join(',') %>]
+log_level = "warn"
+ui = false

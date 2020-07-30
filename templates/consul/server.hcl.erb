@@ -1,0 +1,12 @@
+# This file is managed by Puppet
+
+server = true
+bootstrap_expect = 1
+datacenter = "dc1"
+encrypt = "<%= @encrypt %>"
+data_dir = "/opt/consul"
+client_addr = "0.0.0.0"
+advertise_addr = <%= @facts['ipaddress'] %>
+retry_join = [<%= @retry_join.join(',') %>]
+log_level = "warn"
+ui = false

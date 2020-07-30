@@ -1,0 +1,30 @@
+# This file is managed by Puppet
+
+datacenter = "dc1"
+data_dir = "/opt/nomad"
+bind_addr = "0.0.0.0"
+log_level = "WARN"
+
+acl {
+  enabled = true
+}
+
+advertise {
+  http = "<%= @facts['ipaddress'] %>"
+  rpc  = "<%= @facts['ipaddress'] %>"
+  serf = "<%= @facts['ipaddress'] %>"
+}
+
+server {
+    enabled = true
+    ui = false
+    bootstrap_expect = 1
+    encrypt = "<%= @encrypt %>"
+    server_join {
+        retry_join = [<%= @retry_join.join(',') %>]
+    }
+}
+
+consul {
+  address = "127.0.0.1:8500"
+}

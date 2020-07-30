@@ -1,0 +1,11 @@
+---
+vision_hashicorp::consul::server::encrypt: 'SECRET'
+vision_hashicorp::consul::server::retry_join:
+  - 'localhost'
+vision_hashicorp::consul::client::retry_join:
+  - 'localhost'
+vision_hashicorp::nomad::server::encrypt: 'SECRET'
+vision_hashicorp::nomad::server::retry_join:
+  - 'localhost'
+vision_hashicorp::nomad::client::retry_join:
+  - 'localhost'

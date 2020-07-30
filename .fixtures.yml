@@ -1,0 +1,11 @@
+---
+fixtures:
+  repositories:
+    stdlib:
+      ref: "v6.2.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    apt:
+      ref: "v7.4.2"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+  symlinks:
+    vision_hashicorp: '#{source_dir}'
