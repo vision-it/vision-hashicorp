@@ -23,7 +23,7 @@ define vision_hashicorp::consul::service (
     ensure  => present,
     owner   => 'consul',
     group   => 'consul',
-    mode    => '640',
+    mode    => '0640',
     content => template('vision_hashicorp/consul/service.json.erb'),
     notify  => Service['consul'],
   }

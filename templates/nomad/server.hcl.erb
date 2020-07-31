@@ -15,10 +15,13 @@ advertise {
   serf = "<%= @advertise_addr %>"
 }
 
+client {
+  enabled = false
+}
+
 server {
     enabled = true
-    ui = false
-    bootstrap_expect = 1
+    bootstrap_expect = "<%= @retry_join.length %>"
     encrypt = "<%= @encrypt.unwrap %>"
     server_join {
         retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]

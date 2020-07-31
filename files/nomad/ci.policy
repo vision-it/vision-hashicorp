@@ -1,0 +1,4 @@
+# This file is managed by Puppet
+namespace "ci" {
+  capabilities = ["submit-job","list-jobs","read-job"]
+}

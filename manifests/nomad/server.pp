@@ -28,10 +28,30 @@ class vision_hashicorp::nomad::server (
 
   file { '/etc/nomad.d/nomad.hcl':
     ensure  => present,
+    owner   => 'nomad',
+    group   => 'nomad',
     mode    => '0640',
     content => template('vision_hashicorp/nomad/server.hcl.erb'),
     require => Package['nomad'],
     notify  => Service['nomad'],
+  }
+
+  file { '/etc/nomad.d/anonymous.policy':
+    ensure  => present,
+    owner   => 'nomad',
+    group   => 'nomad',
+    mode    => '0640',
+    content => file('vision_hashicorp/nomad/anonymous.policy'),
+    require => Package['nomad'],
+  }
+
+  file { '/etc/nomad.d/ci.policy':
+    ensure  => present,
+    owner   => 'nomad',
+    group   => 'nomad',
+    mode    => '0640',
+    content => file('vision_hashicorp/nomad/ci.policy'),
+    require => Package['nomad'],
   }
 
   service { 'nomad':
@@ -39,6 +59,5 @@ class vision_hashicorp::nomad::server (
     enable => true,
   }
 
-  # TODO: ACL + Bootstrap
 
 }

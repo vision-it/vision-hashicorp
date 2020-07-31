@@ -22,5 +22,15 @@ describe 'vision_hashicorp::nomad::server' do
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'encrypt' }
     end
+    describe file('/etc/nomad.d/anonymous.policy') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+      its(:content) { is_expected.to match 'deny' }
+    end
+    describe file('/etc/nomad.d/ci.policy') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+      its(:content) { is_expected.to match 'read-job' }
+    end
   end
 end
