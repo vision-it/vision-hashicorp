@@ -2,7 +2,7 @@
 
 server = false
 datacenter = "dc1"
-encrypt = "<%= @encrypt %>"
+encrypt = "<%= @encrypt.unwrap %>"
 data_dir = "/opt/consul"
 client_addr = "127.0.0.1"
 advertise_addr = <%= @advertise_addr %>

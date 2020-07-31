@@ -19,7 +19,7 @@ server {
     enabled = true
     ui = false
     bootstrap_expect = 1
-    encrypt = "<%= @encrypt %>"
+    encrypt = "<%= @encrypt.unwrap %>"
     server_join {
         retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]
     }
