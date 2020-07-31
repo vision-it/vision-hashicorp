@@ -21,7 +21,7 @@ server {
     bootstrap_expect = 1
     encrypt = "<%= @encrypt %>"
     server_join {
-        retry_join = [<%= @retry_join.join(',') %>]
+        retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]
     }
 }
 

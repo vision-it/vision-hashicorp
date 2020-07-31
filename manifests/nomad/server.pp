@@ -39,4 +39,6 @@ class vision_hashicorp::nomad::server (
     enable => true,
   }
 
+  # TODO: ACL + Bootstrap
+
 }

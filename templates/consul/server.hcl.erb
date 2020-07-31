@@ -7,6 +7,6 @@ encrypt = "<%= @encrypt %>"
 data_dir = "/opt/consul"
 client_addr = "0.0.0.0"
 advertise_addr = <%= @advertise_addr %>
-retry_join = [<%= @retry_join.join(',') %>]
+retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]
 log_level = "warn"
 ui = false

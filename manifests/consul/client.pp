@@ -14,6 +14,7 @@
 class vision_hashicorp::consul::client (
 
   Array $retry_join,
+  Sensitive[String] $encrypt,
   String $advertise_addr = $::ipaddress,
 
 ) {
@@ -36,5 +37,8 @@ class vision_hashicorp::consul::client (
     ensure => running,
     enable => true,
   }
+
+  # TODO: dnsmasq
+  # See https://gluster.readthedocs.io/en/latest/Administrator%20Guide/Consul/
 
 }

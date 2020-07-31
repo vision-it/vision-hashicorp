@@ -2,9 +2,10 @@
 
 server = false
 datacenter = "dc1"
+encrypt = "<%= @encrypt %>"
 data_dir = "/opt/consul"
-client_addr = "0.0.0.0"
+client_addr = "127.0.0.1"
 advertise_addr = <%= @advertise_addr %>
-retry_join = [<%= @retry_join.join(',') %>]
+retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]
 log_level = "warn"
 ui = false

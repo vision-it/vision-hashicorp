@@ -57,5 +57,7 @@ vision_hashicorp::repo::repo_key: |
 lookup_options:
   'vision_hashicorp::consul::server::encrypt':
     convert_to: 'Sensitive'
+  'vision_hashicorp::consul::client::encrypt':
+    convert_to: 'Sensitive'
   'vision_hashicorp::nomad::server::encrypt':
     convert_to: 'Sensitive'

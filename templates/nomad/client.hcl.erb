@@ -21,7 +21,7 @@ advertise {
 client {
  enabled = true
  server_join {
-   retry_join = [<%= @retry_join.join(',') %>]
+   retry_join = [<%= @retry_join.map{|s| "\"#{s}\""}.join(', ')%>]
  }
  options = {
    "docker.volumes.enabled" = true
