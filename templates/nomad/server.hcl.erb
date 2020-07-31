@@ -10,9 +10,9 @@ acl {
 }
 
 advertise {
-  http = "<%= @facts['ipaddress'] %>"
-  rpc  = "<%= @facts['ipaddress'] %>"
-  serf = "<%= @facts['ipaddress'] %>"
+  http = "<%= @advertise_addr %>"
+  rpc  = "<%= @advertise_addr %>"
+  serf = "<%= @advertise_addr %>"
 }
 
 server {

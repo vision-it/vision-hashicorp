@@ -14,6 +14,7 @@
 class vision_hashicorp::consul::client (
 
   Array $retry_join,
+  String $advertise_addr = $::ipaddress,
 
 ) {
 

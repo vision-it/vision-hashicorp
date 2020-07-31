@@ -15,6 +15,7 @@ class vision_hashicorp::nomad::server (
 
   Array $retry_join,
   Sensitive[String] $encrypt,
+  String $advertise_addr = $::ipaddress,
 
 ) {
 
