@@ -40,7 +40,18 @@ class vision_hashicorp::consul::client (
     enable => true,
   }
 
-  # TODO: dnsmasq
-  # See https://gluster.readthedocs.io/en/latest/Administrator%20Guide/Consul/
+  # DNS Service to ensure other applications can access it via port 53
+  package { 'dnsmasq':
+    ensure => present,
+  }
 
+  file { '/etc/dnsmasq.d/10-consul':
+    ensure  => present,
+    mode    => '0644',
+    content => 'server=/consul/127.0.0.1#8600',
+    require => Package['dnsmasq'],
+  }
+
+  # TODO: Adjust resolv.conf
+  # Maybe /etc/dhcp/dhclient.conf
 }
