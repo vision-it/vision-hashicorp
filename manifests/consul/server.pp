@@ -28,6 +28,8 @@ class vision_hashicorp::consul::server (
 
   file { '/etc/consul.d/consul.hcl':
     ensure  => present,
+    owner   => 'consul',
+    group   => 'consul',
     mode    => '0640',
     content => template('vision_hashicorp/consul/server.hcl.erb'),
     require => Package['consul'],
