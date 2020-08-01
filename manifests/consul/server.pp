@@ -32,12 +32,14 @@ class vision_hashicorp::consul::server (
     group   => 'consul',
     mode    => '0640',
     content => template('vision_hashicorp/consul/server.hcl.erb'),
+    notify  => Service['consul'],
     require => Package['consul'],
   }
 
   service { 'consul':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => Package['consul'],
   }
 
 }

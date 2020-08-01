@@ -32,12 +32,14 @@ class vision_hashicorp::consul::client (
     group   => 'consul',
     mode    => '0640',
     content => template('vision_hashicorp/consul/client.hcl.erb'),
+    notify  => Service['consul'],
     require => Package['consul'],
   }
 
   service { 'consul':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => Package['consul'],
   }
 
   # DNS Service to ensure other applications can access it via port 53
