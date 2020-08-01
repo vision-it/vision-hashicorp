@@ -4,26 +4,20 @@
 
 ## Parameter
 
-### Consul Keys
+### Gossip Encrypt Keys
 
 ```
 consul keygen
-```
-
-### Nomad Keys
-
-```
 nomad operator keygen
 ```
 
-## Nomad ACL
+# Bootsrap Nomad ACL
 
 ```
-nomad acl bootstrap
-nomad acl policy apply -description "Anonymous" anonymous anonymous.policy.hcl
-nomad acl policy apply -description "CI Runner" ci ci.policy.hcl
+$server1: nomad acl bootstrap
+$server1: nomad acl policy apply -description "Anonymous" anonymous anonymous.policy.hcl
+$server1: nomad acl policy apply -description "CI Runner" ci ci.policy.hcl
 ```
-
 
 ## Usage
 
@@ -39,6 +33,8 @@ mod 'vision_hashicorp',
 Include in a role/profile:
 
 ```puppet
-contain ::vision_hashicorp
+contain ::vision_hashicorp::consul::server
+contain ::vision_hashicorp::consul::client
+contain ::vision_hashicorp::nomad::server
+contain ::vision_hashicorp::nomad::client
 ```
-
