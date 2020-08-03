@@ -54,6 +54,10 @@ class vision_hashicorp::consul::client (
     require => Package['dnsmasq'],
   }
 
-  # TODO: Adjust resolv.conf
-  # Maybe /etc/dhcp/dhclient.conf
+  file_line { 'consul_dns':
+    path  => '/etc/resolv.conf',
+    after => 'search.*',
+    line  => 'nameserver 127.0.0.1',
+  }
+
 }

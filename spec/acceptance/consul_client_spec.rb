@@ -15,12 +15,19 @@ describe 'vision_hashicorp::consul::client' do
     describe package('consul') do
       it { is_expected.to be_installed }
     end
+    describe package('dnsmasq') do
+      it { is_expected.to be_installed }
+    end
   end
   context 'config provisioned' do
     describe file('/etc/consul.d/consul.hcl') do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'server = false' }
+    end
+    describe file('/etc/resolv.conf') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match '127.0.0.1' }
     end
   end
 end
