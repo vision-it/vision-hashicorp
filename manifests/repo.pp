@@ -28,7 +28,8 @@ class vision_hashicorp::repo (
     include  => {
       'src' => false,
       'deb' => true,
-    }
+    },
+    notify   => Exec['apt_update'],
   }
 
 }
