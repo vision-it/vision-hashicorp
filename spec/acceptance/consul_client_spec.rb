@@ -8,6 +8,7 @@ describe 'vision_hashicorp::consul::client' do
       FILE
 
       apply_manifest(pp, catch_failures: false)
+      apply_manifest(pp, catch_failures: false)
     end
   end
 
@@ -24,6 +25,19 @@ describe 'vision_hashicorp::consul::client' do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'server = false' }
+    end
+    describe file('/etc/consul.d/service_example.json') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'foobar' }
+      its(:content) { is_expected.to match '1234' }
+    end
+    describe file('/etc/dnsmasq.conf') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match '127.0.0.1' }
+    end
+    describe file('/etc/dnsmasq.d/10-consul') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match '127.0.0.1' }
     end
     describe file('/etc/resolv.conf') do
       it { is_expected.to exist }

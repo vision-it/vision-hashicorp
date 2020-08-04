@@ -16,10 +16,12 @@ class vision_hashicorp::consul::server (
   Array $retry_join,
   Sensitive[String] $encrypt,
   String $advertise_addr = $::ipaddress,
+  Optional[Hash] $services = {},
 
 ) {
 
   contain vision_hashicorp::repo
+  contain vision_hashicorp::dnsmasq
 
   package { 'consul':
     ensure  => present,
@@ -41,5 +43,7 @@ class vision_hashicorp::consul::server (
     enable  => true,
     require => Package['consul'],
   }
+
+  create_resources('vision_hashicorp::consul::service', $services)
 
 }

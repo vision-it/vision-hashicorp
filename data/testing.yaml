@@ -5,6 +5,16 @@ vision_hashicorp::consul::server::retry_join:
   - 'localhost'
 vision_hashicorp::consul::client::retry_join:
   - 'localhost'
+vision_hashicorp::consul::client::services:
+  example:
+    port: 1234
+    tags:
+      - 'foobar'
+    checks:
+      - interval: '10s'
+        tcp: 'localhost:8080'
+        timeout: '10s'
+
 vision_hashicorp::nomad::server::encrypt: 'SECRET'
 vision_hashicorp::nomad::server::retry_join:
   - 'localhost'

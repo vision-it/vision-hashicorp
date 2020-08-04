@@ -16,10 +16,12 @@ class vision_hashicorp::consul::client (
   Array $retry_join,
   Sensitive[String] $encrypt,
   String $advertise_addr = $::ipaddress,
+  Optional[Hash] $services = {},
 
 ) {
 
   contain vision_hashicorp::repo
+  contain vision_hashicorp::dnsmasq
 
   package { 'consul':
     ensure  => present,
@@ -42,22 +44,6 @@ class vision_hashicorp::consul::client (
     require => Package['consul'],
   }
 
-  # DNS Service to ensure other applications can access it via port 53
-  package { 'dnsmasq':
-    ensure => present,
-  }
-
-  file { '/etc/dnsmasq.d/10-consul':
-    ensure  => present,
-    mode    => '0644',
-    content => 'server=/consul/127.0.0.1#8600',
-    require => Package['dnsmasq'],
-  }
-
-  file_line { 'consul_dns':
-    path  => '/etc/resolv.conf',
-    after => 'search.*',
-    line  => 'nameserver 127.0.0.1',
-  }
+  create_resources('vision_hashicorp::consul::service', $services)
 
 }

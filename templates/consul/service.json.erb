@@ -1,8 +1,7 @@
-# This file is managed by Puppet
-
 {
   "service": {
-    "id": "<%= @title %>",
+    "_comment": "This file is managed by Puppet"
+    "id": "<%= @service_id %>",
     "name": "<%= @service_name %>",
     "tags":  [<%= @tags.map{|s| "\"#{s}\""}.join(', ')%>],
     "address": "<%= @address %>",
@@ -11,5 +10,6 @@
     <% @checks.each do |check| -%>
     <%= check.to_json %>
     <% end -%>
- ]
+   ]
+ }
 }

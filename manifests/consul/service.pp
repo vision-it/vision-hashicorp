@@ -10,14 +10,13 @@
 define vision_hashicorp::consul::service (
 
   Integer $port,
-  Optional[String] $address,
+  Optional[String] $address = undef,
   Array $tags = [],
   Array[Hash] $checks = [],
   String $service_name = $title,
+  String $service_id = "${::hostname}-${title}",
 
 ) {
-
-  contain vision_hashicorp::consul::server
 
   file { "/etc/consul.d/service_${title}.json":
     ensure  => present,
@@ -25,7 +24,6 @@ define vision_hashicorp::consul::service (
     group   => 'consul',
     mode    => '0640',
     content => template('vision_hashicorp/consul/service.json.erb'),
-    notify  => Service['consul'],
   }
 
 }

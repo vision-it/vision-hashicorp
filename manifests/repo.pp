@@ -18,6 +18,8 @@ class vision_hashicorp::repo (
 
 ) {
 
+  contain apt
+
   apt::source { 'hashicorp':
     location => 'https://apt.releases.hashicorp.com',
     repos    => 'main',
