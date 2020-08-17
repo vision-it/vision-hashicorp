@@ -1,6 +1,5 @@
 {
   "service": {
-    "_comment": "This file is managed by Puppet"
     "id": "<%= @service_id %>",
     "name": "<%= @service_name %>",
     "tags":  [<%= @tags.map{|s| "\"#{s}\""}.join(', ')%>],
