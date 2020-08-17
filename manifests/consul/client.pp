@@ -39,9 +39,10 @@ class vision_hashicorp::consul::client (
   }
 
   service { 'consul':
-    ensure  => running,
-    enable  => true,
-    require => Package['consul'],
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    require    => Package['consul'],
   }
 
   create_resources('vision_hashicorp::consul::service', $services)

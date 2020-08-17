@@ -34,9 +34,10 @@ class vision_hashicorp::nomad::client (
   }
 
   service { 'nomad':
-    ensure  => running,
-    enable  => true,
-    require => Package['nomad'],
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    require    => Package['nomad'],
   }
 
 }
