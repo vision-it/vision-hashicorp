@@ -19,7 +19,6 @@ describe 'vision_hashicorp::consul::service' do
   context 'service created' do
     describe file('/etc/consul.d/service_foobar.json') do
       it { is_expected.to exist }
-      its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match '8080' }
       its(:content) { is_expected.to match '"interval":"10s"' }
     end

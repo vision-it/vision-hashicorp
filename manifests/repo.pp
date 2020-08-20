@@ -18,8 +18,6 @@ class vision_hashicorp::repo (
 
 ) {
 
-  contain apt
-
   apt::source { 'hashicorp':
     location => 'https://apt.releases.hashicorp.com',
     repos    => 'main',
@@ -31,7 +29,12 @@ class vision_hashicorp::repo (
       'src' => false,
       'deb' => true,
     },
-    notify   => Exec['apt_update'],
+    pin      => '500',
+  }
+  -> exec { 'hashicorp-update':
+    command     => '/usr/bin/apt-get update',
+    logoutput   => 'on_failure',
+    refreshonly => true,
   }
 
 }
