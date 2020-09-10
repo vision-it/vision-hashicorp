@@ -61,3 +61,7 @@ lookup_options:
     convert_to: 'Sensitive'
   'vision_hashicorp::nomad::server::encrypt':
     convert_to: 'Sensitive'
+  'vision_hashicorp::consul::server::services':
+    merge:
+      strategy: deep
+      merge_hash_arrays: true
