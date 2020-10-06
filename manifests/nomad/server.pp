@@ -45,12 +45,13 @@ class vision_hashicorp::nomad::server (
     require => Package['nomad'],
   }
 
-  file { '/etc/nomad.d/ci.policy':
+  # Hint: Nomad OpenSource only supports the default namespace
+  file { '/etc/nomad.d/default.policy':
     ensure  => present,
     owner   => 'nomad',
     group   => 'nomad',
     mode    => '0640',
-    content => file('vision_hashicorp/nomad/ci.policy'),
+    content => file('vision_hashicorp/nomad/default.policy'),
     require => Package['nomad'],
   }
 
