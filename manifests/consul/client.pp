@@ -23,6 +23,10 @@ class vision_hashicorp::consul::client (
   contain vision_hashicorp::dnsmasq
   contain vision_hashicorp::consul::common
 
+  # /etc/consul.d needs to be created first
+  Package['consul']
+  -> Class['vision_hashicorp::consul::common']
+
   package { 'consul':
     ensure  => present,
     require => Class['vision_hashicorp::repo'],
