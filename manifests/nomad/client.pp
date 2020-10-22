@@ -33,11 +33,22 @@ class vision_hashicorp::nomad::client (
     notify  => Service['nomad'],
   }
 
+  file { '/etc/systemd/system/nomad.service':
+    ensure  => present,
+    mode    => '0644',
+    content => file('vision_hashicorp/nomad/nomad.service'),
+    require => Package['nomad'],
+    notify  => Service['nomad'],
+  }
+
   service { 'nomad':
     ensure     => running,
     enable     => true,
     hasrestart => true,
-    require    => Package['nomad'],
+    require    => [
+      Package['nomad'],
+      File['/etc/systemd/system/nomad.service'],
+    ],
   }
 
 }

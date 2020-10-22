@@ -32,5 +32,10 @@ describe 'vision_hashicorp::nomad::server' do
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'read-job' }
     end
+    describe file('/etc/systemd/system/nomad.service') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+      its(:content) { is_expected.to match 'data.mount' }
+    end
   end
 end
