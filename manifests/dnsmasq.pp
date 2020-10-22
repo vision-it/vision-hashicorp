@@ -36,6 +36,19 @@ class vision_hashicorp::dnsmasq (
     notify  => Service['dnsmasq'],
   }
 
+  file { '/etc/dhcp/dhclient-enter-hooks.d/keep-resolv':
+    ensure  => present,
+    mode    => '0755',
+    content => file('vision_hashicorp/consul/dnsmasq-dhclient.conf'),
+  }
+
+  file_line { 'consul_dns':
+    path   => '/etc/resolv.conf',
+    after  => 'search.*',
+    line   => 'nameserver 127.0.0.1',
+    notify => Service['dnsmasq'],
+  }
+
   service { 'dnsmasq':
     ensure     => running,
     enable     => true,
@@ -44,13 +57,6 @@ class vision_hashicorp::dnsmasq (
       File['/etc/dnsmasq.conf'],
       File['/etc/dnsmasq.d/10-consul'],
     ]
-  }
-
-  file_line { 'consul_dns':
-    path   => '/etc/resolv.conf',
-    after  => 'search.*',
-    line   => 'nameserver 127.0.0.1',
-    notify => Service['dnsmasq'],
   }
 
 }
