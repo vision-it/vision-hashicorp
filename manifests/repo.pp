@@ -4,6 +4,9 @@
 # Parameters
 # ----------
 #
+# @param repo_key Key for the Hashicorp Apt repository
+# @param repo_key_id Key ID for the Hashicorp Apt repository
+#
 # Examples
 # --------
 #

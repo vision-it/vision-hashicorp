@@ -6,6 +6,13 @@
 # Parameters
 # ----------
 #
+# @param port Port of the Service
+# @param address Address of the Service
+# @param tags List of Tags for the Service
+# @param checks List of checks for the Service
+# @param service_name Name of the Service
+# @param service_id ID of the Service
+#
 
 define vision_hashicorp::consul::service (
 
@@ -18,6 +25,7 @@ define vision_hashicorp::consul::service (
 
 ) {
 
+  # TODO: Needs to trigger a Consul reload
   file { "/etc/consul.d/service_${title}.json":
     ensure  => present,
     owner   => 'consul',

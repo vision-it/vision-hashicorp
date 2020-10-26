@@ -1,6 +1,8 @@
 # Class: vision_hashicorp::dnsmasq
 # ===========================
 #
+# https://learn.hashicorp.com/tutorials/consul/dns-forwarding
+#
 # Parameters
 # ----------
 #
@@ -20,6 +22,7 @@ class vision_hashicorp::dnsmasq (
     ensure => present,
   }
 
+  # DNS config for Consul
   file { '/etc/dnsmasq.d/10-consul':
     ensure  => present,
     mode    => '0644',
@@ -36,6 +39,7 @@ class vision_hashicorp::dnsmasq (
     notify  => Service['dnsmasq'],
   }
 
+  # It's simpler to just keep the current resolv.conf
   file { '/etc/dhcp/dhclient-enter-hooks.d/keep-resolv':
     ensure  => present,
     mode    => '0755',

@@ -4,6 +4,10 @@
 # Parameters
 # ----------
 #
+# @param retry_join List of Nomad servers to connect to.
+# @param encrypt Secret key to use for encryption of Nomad network traffic.
+# @param advertise_addr Address to bind to.
+#
 # Examples
 # --------
 #

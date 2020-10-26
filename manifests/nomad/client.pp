@@ -4,6 +4,9 @@
 # Parameters
 # ----------
 #
+# @param retry_join List of Nomad servers to connect to.
+# @param advertise_addr Address to bind to.
+#
 # Examples
 # --------
 #
@@ -33,6 +36,7 @@ class vision_hashicorp::nomad::client (
     notify  => Service['nomad'],
   }
 
+  # Deploy customized Service Unit, for Consul and DNS adjustments.
   file { '/etc/systemd/system/nomad.service':
     ensure  => present,
     mode    => '0644',

@@ -4,6 +4,8 @@
 # Parameters
 # ----------
 #
+# @param services List of Consul service files to create
+#
 # Examples
 # --------
 #
