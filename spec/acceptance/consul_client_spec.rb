@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'vision_hashicorp::consul::client' do
@@ -49,7 +51,7 @@ describe 'vision_hashicorp::consul::client' do
     end
     describe file('/etc/dhcp/dhclient-enter-hooks.d/keep-resolv') do
       it { is_expected.to exist }
-      it { should be_mode 755 }
+      it { is_expected.to be_mode 755 }
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'make_resolv_conf' }
     end
