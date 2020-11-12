@@ -43,7 +43,7 @@ describe 'vision_hashicorp::consul::client' do
     end
     describe file('/etc/dnsmasq.conf') do
       it { is_expected.to exist }
-      its(:content) { is_expected.to match '127.0.0.1' }
+      its(:content) { is_expected.to match 'all' }
     end
     describe file('/etc/dnsmasq.d/10-consul') do
       it { is_expected.to exist }

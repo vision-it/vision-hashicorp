@@ -25,7 +25,6 @@ define vision_hashicorp::consul::service (
 
 ) {
 
-  # TODO: Needs to trigger a Consul reload
   file { "/etc/consul.d/service_${title}.json":
     ensure  => present,
     owner   => 'consul',

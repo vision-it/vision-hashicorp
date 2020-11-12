@@ -50,6 +50,7 @@ class vision_hashicorp::consul::client (
     ensure     => running,
     enable     => true,
     hasrestart => true,
+    subscribe  => Class['vision_hashicorp::consul::common'],
     require    => Package['consul'],
   }
 
