@@ -1,6 +1,6 @@
 # vision-hashicorp
 
-[![Build Status](https://travis-ci.org/vision-it/vision-hashicorp.svg?branch=development)](https://travis-ci.org/vision-it/vision-hashicorp)
+[![Build Status](https://travis-ci.com/vision-it/vision-hashicorp.svg?branch=staging)](https://travis-ci.com/vision-it/vision-hashicorp)
 
 ## Parameter
 
