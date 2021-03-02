@@ -1,5 +1,6 @@
 # This file is managed by Puppet
+# Policies for CI
 namespace "default" {
   policy = "read"
-  capabilities = ["submit-job","list-jobs","read-job", "read-logs"]
+  capabilities = ["submit-job","list-jobs","read-job"]
 }

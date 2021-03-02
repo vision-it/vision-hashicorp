@@ -1,0 +1,18 @@
+# This file is managed by Puppet
+# Policies for Operators
+namespace "default" {
+  policy = "read"
+  capabilities = ["submit-job","list-jobs","read-job","dispatch-job","read-logs","scale-job","alloc-lifecycle"]
+  node {
+    policy = "write"
+  }
+  agent {
+    policy = "read"
+  }
+  client {
+    policy = "read"
+  }
+  operator {
+    policy = "read"
+  }
+}
