@@ -1,4 +1,5 @@
 # This file is managed by Puppet
+# Deny all policy for anonymous
 namespace "*" {
   policy = "deny"
 }
