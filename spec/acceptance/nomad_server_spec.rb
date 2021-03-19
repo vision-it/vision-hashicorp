@@ -23,6 +23,7 @@ describe 'vision_hashicorp::nomad::server' do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'encrypt' }
+      its(:content) { is_expected.to match 'telemetry' }
     end
     describe file('/etc/nomad.d/anonymous.policy') do
       it { is_expected.to exist }
